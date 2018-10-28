@@ -1,0 +1,34 @@
+#Test with AMR#2
+#amr_uri: http://192.168.30.165:6060/
+# Benjin CitiGo
+AMR_URI : 'http://192.168.64.12:6060/'
+# Bengin CitiGo test on laptop
+# amr_uri : 'http://192.168.64.9:8080/'
+# Bengin CitiGo test at 136
+# amr_uri : 'http://192.168.79.18:8080/'
+# Office test on NB
+# AMR_URI : 'http://192.168.77.235:8080/'
+#table = {KEY:[boardNo. ConnectorNo]}s
+table:
+    'open' : [1, 1]
+    'close' : [1, 2]
+    '1' : [1, 3] # 1F   
+    '4' : [1, 9] # 2F   
+    '2' : [1, 7] # 3F   
+    '3' : [1, 8] # 4F
+
+FLOOR_LED_CONFIRMATION_MAX_TIME : [ 2  , 2  ]
+FLOOR_LED_CONFIRMATION_MIN_TIME : [ 0.5,   0.5 ]
+
+NOTIFY_MAX_RETRY_TIMES: 6
+WAIT_DOOR_LIMIT: 20
+DOOR_OPEN_LIMIT_TIME: 60.0 #sec # MAX time that door can keep open, after that, timeout_release.
+WAIT_REACH_LIMIT_TIME: 300.0 #sec # MAX time that wait for EV to reach assign floor.
+REC_TIMEOUT: 0.1 # sec # How long whould you wait for reply from ST board
+IS_VERBOSE: False
+SLIENCE_MIN_COUNTER: 5 # 0.1 * 30  = 3 sec #Continuous slience for how long would EVB consider there is nobody inside.
+
+# RSS Tools
+CORP_ID: 'ww0692f024800a89da'
+CORP_SECRET: 'IX24vBwC7MomUqnKihX3UjpwKamCCa3wIwF5oHrUOtY'
+AGENT_ID: 1000004
