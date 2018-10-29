@@ -148,7 +148,7 @@ if __name__ == '__main__':
 	#####################
 
 	# subscribe(topic, qos=0) # Single topic 
-	client.subscribe([(SERVICE_NAME+"/cmd", 2), (SERVICE_NAME+"/status", 2)]) # Subcribe to multi topic.
+	#client.subscribe([(SERVICE_NAME+"/cmd", 2), (SERVICE_NAME+"/status", 2)]) # Subcribe to multi topic.
 
 	# The function returns a tuple (result, mid), where result is MQTT_ERR_SUCCESS to indicate success or (MQTT_ERR_NO_CONN, None) if the client is not currently connected. mid is the message ID for the subscribe request. The mid value can be used to track the subscribe request by checking against the mid argument in the on_subscribe() callback if it is defined.
 
