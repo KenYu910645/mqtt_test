@@ -18,8 +18,10 @@ def on_connect(client, userdata, flags, rc):
     print "[on_connect] the private user data as set in Client() or user_data_set() : " , str(userdata) 
     print "[on_connect] response flags sent by the broker : ", flags
     print("[on_connect] the connection result "+ mqtt.connack_string(rc))
+    client.publish(("elevator/available"), "Online" ,2, True)
     # Subscribing in on_connect() means that if we lose the connection and
     # reconnect then subscriptions will be renewed.
+    client.subscribe() # Again all 
     # client.subscribe("$SYS/#")
 
 def on_disconnect(client, userdata, rc):
@@ -98,7 +100,7 @@ client.on_unsubscribe = on_unsubscribe
 client.on_log = on_log
 
 # client.connect("iot.eclipse.org", 1883, 60)
-rc = client.connect(host="iot.eclipse.org", port=1883, keepalive=60, bind_address="")
+rc = client.connect(host="iot.eclipse.org", port=1883, keepalive=10, bind_address="")
 print "Result of Connection (rc) : ", rc
 # keepalive
     # maximum period in seconds allowed between communications with the broker.
@@ -148,7 +150,7 @@ if __name__ == '__main__':
 	#####################
 
 	# subscribe(topic, qos=0) # Single topic 
-	#client.subscribe([(SERVICE_NAME+"/cmd", 2), (SERVICE_NAME+"/status", 2)]) # Subcribe to multi topic.
+	client.subscribe([(SERVICE_NAME+"/cmd", 2), ("amr"+"/status", 0)]) # Subcribe to multi topic.
 
 	# The function returns a tuple (result, mid), where result is MQTT_ERR_SUCCESS to indicate success or (MQTT_ERR_NO_CONN, None) if the client is not currently connected. mid is the message ID for the subscribe request. The mid value can be used to track the subscribe request by checking against the mid argument in the on_subscribe() callback if it is defined.
 
@@ -162,7 +164,7 @@ if __name__ == '__main__':
 	####  PUblishing ####
 	#####################
 	    # print "[main] loop "
-	    client.publish(topic=SERVICE_NAME+"/status", payload="moveing2current", qos=2, retain=False)
+	    #client.publish(topic=SERVICE_NAME+"/status", payload="moveing2current", qos=2, retain=False)
 		# payload : struct.pack()  
             time.sleep(1)  
 	'''

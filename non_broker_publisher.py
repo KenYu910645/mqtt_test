@@ -19,7 +19,7 @@ if __name__ == '__main__':
     #client.on_publish = on_publish
     # client.connect("192.168.30.67", 1883, 60)
     # publish a single message
-    publish.single(topic="test", payload=json.dumps(msgs), hostname='192.168.30.67')
+    publish.single(topic="amr/status", payload=json.dumps(msgs), hostname='iot.eclipse.org')
     
     # publish multiple messages
     #publish.multiple(msgs, hostname=host)
