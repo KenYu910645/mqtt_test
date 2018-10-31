@@ -42,8 +42,8 @@ def on_publish(mosq, obj, mid):
     # Qos_1 Qos_2:  this means that the appropriate handshakes have completed.
     pass
 # When the broker has acknowledged the subscription, an on_subscribe() callback will be generated.
-def on_subscribe(client, userdata, mid, granted_qos):
-    print "[on_subscribe] " 
+def on_unsubscribe(self, client, userdata, mid):
+    logger.info( "[on_unsubscribe] Unsubscribe AWK"+ "(Mid: "+ str(mid) + ")" )
     # The granted_qos variable is a list of integers that give the QoS level the broker has granted for each of the different subscription requests.
 
 # When the broker has acknowledged the unsubscribe, an on_unsubscribe() callback will be generated.
