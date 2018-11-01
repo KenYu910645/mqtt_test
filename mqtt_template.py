@@ -24,10 +24,14 @@ class MQTT_OBJ():
 		self.client.on_unsubscribe = self.on_unsubscribe
 		self.client.on_log = self.on_log
 
-		# This is a blocking function 
-		rc = self.client.connect(host=broker_ip, port=port, keepalive=keepalive, bind_address="")
-		self.logger.info("[Connection] rc = " +  str(rc))
+		# Blocking connection funtion
+		#rc = self.client.connect(host=broker_ip, port=port, keepalive=keepalive, bind_address="")
+		#self.logger.info("[Connection] rc = " +  str(rc))
 
+		# Non-blocking connection function 
+		self.client.connect_async(host=broker_ip, port=port, keepalive=keepalive, bind_address="")
+		# Use in conjunction with loop_start() to connect in a non-blocking manner.
+		# The connection will not complete until loop_start() is called.
 		#-----   Start Mqtt Engine  -----#
 		self.client.loop_start ()
 		
