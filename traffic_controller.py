@@ -39,28 +39,28 @@ if __name__ == '__main__':
 		# --------- Check Mqtt Connection ---------# 
 		if mqtt_obj.available == "offline":
 			logger.warn("[NetWork] No Mqtt Connection")
-		
-		#### Blocking publish
-		# mqtt_obj.publish_blocking(topic = "elevator/status", payload = "test test tes ", qos = 1, retain = False, timeout = 10)
-		##################################################
-		###  Publish something don't need to track   #####
-		##################################################
-		# mqtt_obj.publish(topic = CLIENT_NAME+"/position", payload = "432", qos = 1, retain = False)
+		else: # online 
+			#### Blocking publish
+			# mqtt_obj.publish_blocking(topic = "elevator/status", payload = "test test tes ", qos = 1, retain = False, timeout = 10)
+			##################################################
+			###  Publish something don't need to track   #####
+			##################################################
+			# mqtt_obj.publish(topic = CLIENT_NAME+"/position", payload = "432", qos = 1, retain = False)
 
-		###############################
-		###  Publish with track   #####
-		###############################
-		if is_amr_available == "online" and mqtt_obj.available == "online":
-			rc = mqtt_obj.publish(topic = amr_name_list[0]+"/path_allowed", payload = "[432, 431, 430, EV4W, EV_IN]", qos = 2, retain = False)
-			if rc == None: 
-				# Didn't publish because client is current offline
-				# TODO 
-				pass
-			else: 
-				if rc.is_published(): # == True , when get PUB_AWK from broker (qos1, qos2)
+			###############################
+			###  Publish with track   #####
+			###############################
+			if is_amr_available == "online" and mqtt_obj.available == "online":
+				rc = mqtt_obj.publish(topic = amr_name_list[0]+"/path_allowed", payload = "[432, 431, 430, EV4W, EV_IN]", qos = 2, retain = False)
+				if rc == None: 
+					# Didn't publish because client is current offline
 					# TODO 
 					pass
-		else: 
-			logger.warn("[NetWork] One of the client is not online.")
+				else: 
+					if rc.is_published(): # == True , when get PUB_AWK from broker (qos1, qos2)
+						# TODO 
+						pass
+			else: 
+				logger.warn("[NetWork] One of the client is not online.")
 
 		time.sleep(3)
