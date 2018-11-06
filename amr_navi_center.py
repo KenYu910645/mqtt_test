@@ -3,7 +3,7 @@ import time
 import paho.mqtt.client as mqtt
 from global_logger import logger
 import json
-from mqtt_template import MQTT_OBJ
+from MQTT.mqtt_template import MQTT_OBJ
 
 CLIENT_NAME = "AMR_4" # Tow different mqtt client MUST have different name, and '#' , '+' , '/' is NOT allow in topic name
 is_tc_available = ""
@@ -29,6 +29,7 @@ if __name__ == '__main__':
 	'''
 	Init MQTT_OBJ will automative connect to broker and start a background thread for mqtt network
 	client_id , broker_ip , logger  : should be setup right.
+        logger is a python logging handle, if you don't want to use it , pass None . (logger = None)
 	'''
 	mqtt_obj = MQTT_OBJ(client_id=CLIENT_NAME, broker_ip="iot.eclipse.org", port=1883, keepalive=10, clean_session=True, logger = logger)
 	# Wait for connection Accpeted by broker (Optional) 

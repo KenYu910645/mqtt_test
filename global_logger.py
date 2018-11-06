@@ -3,7 +3,7 @@ import argparse
 # logger
 # Set up logger
 formatter = logging.Formatter('[%(asctime)s] %(levelname)s: %(message)s')
-logger = logging.getLogger('cherrypy')
+logger = logging.getLogger('MQTT')
 logger.setLevel(logging.DEBUG)
 
 #Set up args

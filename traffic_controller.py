@@ -3,7 +3,7 @@ import time
 import paho.mqtt.client as mqtt
 from global_logger import logger
 import json
-from mqtt_template import MQTT_OBJ
+from MQTT.mqtt_template import MQTT_OBJ
 
 CLIENT_NAME = "traffic_controller" # Tow different mqtt client MUST have different name, and '#' , '+' , '/' is NOT allow in topic name
 amr_name_list = ["AMR_4", "AMR_5"]
